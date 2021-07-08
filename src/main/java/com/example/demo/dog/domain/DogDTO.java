@@ -3,7 +3,7 @@ package com.example.demo.dog.domain;
 // state (name, color, breed, hungry) and behavior (barking, fetching, wagging tail).
 import java.util.Scanner;
 
-public class Dog{
+public class DogDTO {
     private String name;
     private String color;
     private String breed;
@@ -30,9 +30,7 @@ public class Dog{
     public void setHungry(String hungry){
         this.hungry = hungry;
     }
-    public String getHungry(){
-        return this.hungry;
-    }
+    public String getHungry(){ return this.hungry; }
 
     @Override
     public String toString() {
