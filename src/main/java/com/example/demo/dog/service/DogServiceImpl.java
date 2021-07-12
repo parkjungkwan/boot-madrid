@@ -1,6 +1,8 @@
 package com.example.demo.dog.service;
 
 public class DogServiceImpl implements DogService{
+
+
     @Override
     public String barking(String bark) {
         return null;
