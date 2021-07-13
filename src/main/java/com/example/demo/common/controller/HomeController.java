@@ -4,6 +4,7 @@ import com.example.demo.bank.controller.BankAccountController;
 import com.example.demo.bicycle.controller.BicycleController;
 import com.example.demo.dog.controller.DogController;
 import com.example.demo.dog.domain.DogDTO;
+import com.example.demo.dog.service.DogService;
 import com.example.demo.dog.service.DogServiceImpl;
 import com.example.demo.math.controller.CalculatorController;
 import com.example.demo.util.controller.UtilController;
@@ -23,14 +24,16 @@ public class HomeController {
                 case "2": new CalculatorController().sequence();break;
                 case "3":
                     DogDTO dog = new DogDTO();
+                    DogService dogService = new DogServiceImpl();
+                    DogController dogController = new DogController();
                     System.out.println("이름이 무엇입니까?");
                     dog.setName(scanner.next());
                     System.out.println("색깔은 무엇입니까?");
                     dog.setColor(scanner.next());
                     System.out.println("품종은 무엇입니까?");
                     dog.setBreed(scanner.next());
-                    DogController dogController = new DogController(new DogServiceImpl(dog));
-                    System.out.println(dogController.barking("왈왈"));
+                    dogController.add(dog);
+                    dogController.show();
                     break;
                 case "4": new BicycleController().main();break;
                 case "5": new UtilController().todayAndCurrentTime();break;
