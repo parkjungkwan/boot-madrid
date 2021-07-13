@@ -1,13 +1,21 @@
 package com.example.demo.bank.service;
 
 import com.example.demo.bank.domain.BankAccountDTO;
+import com.example.demo.bicycle.domain.BicycleDTO;
+import com.example.demo.dog.domain.DogDTO;
+import org.springframework.beans.factory.annotation.Autowired;
 
 public class BankAccountServiceImpl implements BankAccountService{
-    private BankAccountDTO bankAccount;
+
+    @Autowired private BankAccountDTO bankAccount;
+    @Autowired private BankAccountDTO[] bankAcounts;
 
     @Override
     public void createAccount(BankAccountDTO bank) {
         bankAccount = new BankAccountDTO();
+        String randomNumber = "";
+        bankAccount.setAccountNumber(randomNumber);
+        bankAccount.setName(bank.getName());
     }
 
     @Override
