@@ -31,11 +31,9 @@ public class BankAccountServiceImpl implements BankAccountService{
     @Override
     public void createAccount(BankAccountDTO bank) {
         UtilService utilService = new UtilServiceImpl();
-        String first = utilService.randomNumbers(4);
-        //if(){}
-        String accountNumber = first +"-"+
-                utilService.randomNumbers(4)+"-"+
-                utilService.randomNumbers(4)
+        String accountNumber = utilService.randomNumbers(4, false) +"-"+
+                utilService.randomNumbers(4, true)+"-"+
+                utilService.randomNumbers(4, true)
                 ;
         bank.setAccountNumber(accountNumber);
         bankAcounts.add(bank);

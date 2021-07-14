@@ -7,15 +7,16 @@ import java.time.LocalTime;
 
 public class UtilServiceImpl implements UtilService{
     @Override
-    public String randomNumbers(int digits) {
+    public String randomNumbers(int digits, boolean allowZeroValue) {
         // Math.random() 클래스 메소드
         // Random random = new Raddom()
         // random.nextInt(1000); 인스턴스 메소드
-        String result = "";
-        for(int i=0; i<digits; i++){
+        String first = "", result = "";
+        first += allowZeroValue ? ((int) (Math.random() * 10)) : ((int) (Math.random() * 9 + 1));
+        for(int i=0; i<digits-1; i++){
             result += (int) (Math.random() * 10);
         }
-        return result;
+        return first + result;
     }
 
     private UtilDTO util;
