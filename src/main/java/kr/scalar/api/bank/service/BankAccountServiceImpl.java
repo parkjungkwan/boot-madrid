@@ -4,7 +4,7 @@ import kr.scalar.api.bank.domain.BankAccountDTO;
 import kr.scalar.api.bicycle.domain.BicycleDTO;
 import kr.scalar.api.dog.domain.DogDTO;
 import org.springframework.beans.factory.annotation.Autowired;
-
+import kr.scalar.api.util.service.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -30,8 +30,14 @@ public class BankAccountServiceImpl implements BankAccountService{
 
     @Override
     public void createAccount(BankAccountDTO bank) {
-
-        bank.setAccountNumber("");
+        UtilService utilService = new UtilServiceImpl();
+        String first = utilService.randomNumbers(4);
+        //if(){}
+        String accountNumber = first +"-"+
+                utilService.randomNumbers(4)+"-"+
+                utilService.randomNumbers(4)
+                ;
+        bank.setAccountNumber(accountNumber);
         bankAcounts.add(bank);
     }
 
