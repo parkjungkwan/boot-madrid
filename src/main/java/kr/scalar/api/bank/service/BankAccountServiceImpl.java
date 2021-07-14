@@ -40,6 +40,15 @@ public class BankAccountServiceImpl implements BankAccountService{
     }
 
     @Override
+    public String[] findAllAccountNumbers() {
+        String[] accountNumbers = new String[count()];
+        for(int i=0; i < count(); i++){
+            accountNumbers[i] = bankAcounts.get(i).getAccountNumber();
+        }
+        return accountNumbers;
+    }
+
+    @Override
     public int findBalance(BankAccountDTO bank) {
         return bankAccount.getMoney();
     }
