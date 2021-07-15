@@ -4,17 +4,11 @@ import kr.scalar.api.dog.domain.DogDTO;
 import kr.scalar.api.dog.service.DogService;
 import kr.scalar.api.dog.service.DogServiceImpl;
 import kr.scalar.api.util.service.LambdaUtils;
-import org.springframework.stereotype.Controller;
-
 import java.util.List;
 import java.util.Scanner;
 
-@Controller
 public class DogController extends LambdaUtils {
-
-
     private DogService dogService;
-
     public DogController(){
         dogService = new DogServiceImpl();
     }
@@ -23,7 +17,7 @@ public class DogController extends LambdaUtils {
         Scanner scanner = new Scanner(System.in);
         DogDTO dog = null;
         while(true){
-            print.accept("[메뉴]: 0-종료 1-추가 2-카운트 3-목록");
+            print.accept("\n[메뉴]: 0-종료 1-추가 2-카운트 3-목록\n");
             switch (scanner.next()){
                 case "0": return;
                 case "1":
