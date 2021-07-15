@@ -18,11 +18,12 @@ public class MathController extends LambdaUtils {
     public void main(){
         Scanner scanner = new Scanner(System.in);
         while(true){
-            print.accept("\n[메뉴] 0-종료 1-계산기 2-구구단\n");
+            print.accept("\n[메뉴] 0-종료 1-계산기 2-수열 3-구구단\n");
             switch (scanner.next()){
                 case "0": return;
                 case "1": calculate(scanner); break;
                 case "2": sequence(scanner);break;
+                case "3": gugudan();break;
             }
         }
 
@@ -48,11 +49,11 @@ public class MathController extends LambdaUtils {
             case "%": result = mathService.remain(math);
                 break;
         }
-        System.out.printf("\n%d %s %d = %d\n",
+        print.accept(String.format("\n%d %s %d = %d\n",
                 math.getNum1(),
                 math.getOpcode(),
                 math.getNum2(),
-                result);
+                result));
     }
     public void sequence(Scanner scanner){
         MathDTO numbers = new MathDTO();

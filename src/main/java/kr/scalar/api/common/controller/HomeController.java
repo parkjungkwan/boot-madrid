@@ -12,7 +12,7 @@ public class HomeController {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         while(true){
-            System.out.println("\n[메뉴] 0.종료 1.유틸 2.계산기 3.개 4.자전거 6.은행 7.하이마트\n");
+            System.out.println("\n[메뉴] 0.종료 1.유틸 2.수학 3.개 4.자전거 6.은행 7.하이마트\n");
             switch (scanner.next()){
                 case "0": return;
                 case "1": new UtilController().main();break;
