@@ -17,7 +17,8 @@ public class BankController extends LambdaUtils {
         Scanner scanner = new Scanner(System.in);
         AccountDTO account = null;
         while(true){
-            System.out.println("[MENU] 0-Exit 1-계좌개설 2-계좌목록 3-계좌번호목록 4-입금");
+            System.out.println("[MENU] 0-Exit 1-계좌개설 2-계좌목록 3-계좌번호목록 \n" +
+                    " 4-잔고확인 5-입금 6-출금");
             switch (scanner.next()){
                 case "0": return;
                 case "1":
@@ -42,10 +43,17 @@ public class BankController extends LambdaUtils {
                     print.accept("계좌번호 : ");
                     account = new AccountDTO();
                     account.setAccountNumber(scanner.next());
+                    account = bankService.deposit(account);
+                    print.accept(account.getAccountNumber()+"의 내역: "+ account);
+                    break;
+                case "5":
+                    print.accept("계좌번호 : ");
+                    account = new AccountDTO();
+                    account.setAccountNumber(scanner.next());
                     print.accept("입금액 : ");
                     account.setMoney(scanner.next());
                     break;
-                case "5": break;
+
                 case "6": break;
 
             }

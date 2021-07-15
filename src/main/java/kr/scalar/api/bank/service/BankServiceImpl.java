@@ -7,33 +7,31 @@ import java.util.List;
 
 public class BankServiceImpl extends LambdaUtils implements BankService {
 
-    private final AccountDTO bankAccount;
-    private final List<AccountDTO> bankAcounts;
+    private final List<AccountDTO> acounts;
 
     @Override
     public String count() {
-        return string.apply(bankAcounts.size());
+        return string.apply(acounts.size());
     }
 
     @Override
     public List<? extends AccountDTO> findAll() {
-        return bankAcounts;
+        return acounts;
     }
 
     public BankServiceImpl(){
-        bankAccount = new AccountDTO();
-        bankAcounts = new ArrayList<>();
+        acounts = new ArrayList<>();
     }
 
     @Override
-    public void createAccount(AccountDTO bank) {
+    public void createAccount(AccountDTO account) {
         UtilService utilService = new UtilServiceImpl();
         String accountNumber = utilService.randomNumbers(4, false) +"-"+
                 utilService.randomNumbers(4, true)+"-"+
                 utilService.randomNumbers(4, true)
                 ;
-        bank.setAccountNumber(accountNumber);
-        bankAcounts.add(bank);
+        account.setAccountNumber(accountNumber);
+        acounts.add(account);
     }
 
     @Override
@@ -41,21 +39,45 @@ public class BankServiceImpl extends LambdaUtils implements BankService {
         int count = strToInt.apply(count());
         String[] accountNumbers = new String[count];
         for(int i=0; i < count; i++){
-            accountNumbers[i] = bankAcounts.get(i).getAccountNumber();
+            accountNumbers[i] = acounts.get(i).getAccountNumber();
         }
         return accountNumbers;
     }
 
     @Override
-    public String findBalance(AccountDTO bank) {
-        return bankAccount.getMoney();
+    public AccountDTO findAccountByAccountNumber(String accountNumber) {
+        AccountDTO account = null;
+        for(AccountDTO a: acounts){
+            if(a.getAccountNumber().equals(accountNumber)){
+                account = a;
+                break;
+            }
+        }
+        return account;
     }
 
     @Override
-    public String deposit(AccountDTO bank) {
-        int restMoney = strToInt.apply(bankAccount.getMoney());
-        bankAccount.setMoney(restMoney + bank.getMoney());
-        return bankAccount.getMoney();
+    public String findBalanceByAccountNumber(String accountnumber) {
+        String balance = "";
+        for(AccountDTO a: acounts){
+            balance = a.getAccountNumber().equals(accountnumber)? a.getBalance(): "0";
+            break;
+        }
+        return balance;
+    }
+
+    @Override
+    public AccountDTO deposit(AccountDTO param) {
+        AccountDTO account = findAccountByAccountNumber(param.getAccountNumber());
+        int restMoney = strToInt.apply(account.getMoney());
+        account.setMoney(restMoney + param.getMoney());
+        for(AccountDTO a: acounts){
+            if(a.getAccountNumber().equals(account.getAccountNumber())){
+                a.setBalance(account.getMoney());
+                account = a;
+            }
+        }
+        return account;
     }
 
     @Override
