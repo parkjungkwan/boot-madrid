@@ -1,15 +1,21 @@
 package kr.scalar.api.math.controller;
 
-import kr.scalar.api.math.domain.CalculatorDTO;
-import kr.scalar.api.math.service.CalculatorService;
-import kr.scalar.api.math.service.CalculatorServiceImpl;
+import kr.scalar.api.math.domain.MathDTO;
+import kr.scalar.api.math.service.MathService;
+import kr.scalar.api.math.service.MathServiceImpl;
 
 import java.util.Scanner;
 
-public class CalculatorController {
+public class MathController {
+
+    
+
+    public void main(){
+
+    }
     Scanner scanner = new Scanner(System.in);
-    CalculatorDTO calculator = new CalculatorDTO();
-    CalculatorService calculatorService = new CalculatorServiceImpl();
+    MathDTO calculator = new MathDTO();
+    MathService calculatorService = new MathServiceImpl();
 
     public void calculate(){
         System.out.println("숫자 1");

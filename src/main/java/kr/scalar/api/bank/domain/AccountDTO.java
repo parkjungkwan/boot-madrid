@@ -3,7 +3,7 @@ package kr.scalar.api.bank.domain;
 import lombok.Data;
 
 @Data
-public class BankAccountDTO {
+public class AccountDTO {
 
     private String name;
     private String accountNumber;

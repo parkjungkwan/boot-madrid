@@ -1,17 +1,14 @@
 package kr.scalar.api.bank.service;
 
-import kr.scalar.api.bank.domain.BankAccountDTO;
-import kr.scalar.api.bicycle.domain.BicycleDTO;
-import kr.scalar.api.dog.domain.DogDTO;
-import org.springframework.beans.factory.annotation.Autowired;
+import kr.scalar.api.bank.domain.AccountDTO;
 import kr.scalar.api.util.service.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class BankAccountServiceImpl extends LambdaUtils implements BankAccountService{
+public class BankServiceImpl extends LambdaUtils implements BankService {
 
-    private final BankAccountDTO bankAccount;
-    private final List<BankAccountDTO> bankAcounts;
+    private final AccountDTO bankAccount;
+    private final List<AccountDTO> bankAcounts;
 
     @Override
     public String count() {
@@ -23,13 +20,13 @@ public class BankAccountServiceImpl extends LambdaUtils implements BankAccountSe
         return bankAcounts;
     }
 
-    public BankAccountServiceImpl(){
-        bankAccount = new BankAccountDTO();
+    public BankServiceImpl(){
+        bankAccount = new AccountDTO();
         bankAcounts = new ArrayList<>();
     }
 
     @Override
-    public void createAccount(BankAccountDTO bank) {
+    public void createAccount(AccountDTO bank) {
         UtilService utilService = new UtilServiceImpl();
         String accountNumber = utilService.randomNumbers(4, false) +"-"+
                 utilService.randomNumbers(4, true)+"-"+
@@ -50,24 +47,24 @@ public class BankAccountServiceImpl extends LambdaUtils implements BankAccountSe
     }
 
     @Override
-    public String findBalance(BankAccountDTO bank) {
+    public String findBalance(AccountDTO bank) {
         return bankAccount.getMoney();
     }
 
     @Override
-    public String deposit(BankAccountDTO bank) {
+    public String deposit(AccountDTO bank) {
         int restMoney = strToInt.apply(bankAccount.getMoney());
         bankAccount.setMoney(restMoney + bank.getMoney());
         return bankAccount.getMoney();
     }
 
     @Override
-    public String withdraw(BankAccountDTO bank) {
+    public String withdraw(AccountDTO bank) {
         return "";
     }
 
     @Override
-    public void dropAccount(BankAccountDTO bank) {
+    public void dropAccount(AccountDTO bank) {
 
     }
 }
