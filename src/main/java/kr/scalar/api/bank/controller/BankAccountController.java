@@ -16,7 +16,7 @@ public class BankAccountController {
         Scanner scanner = new Scanner(System.in);
         BankAccountDTO account = null;
         while(true){
-            System.out.println("[Memu] 0-Exit 1-계좌개설 2-계좌목록 3-계좌번호목록");
+            System.out.println("[Memu] 0-Exit 1-계좌개설 2-계좌목록 3-계좌번호목록 4-입금");
             switch (scanner.next()){
                 case "0": return;
                 case "1":
@@ -34,7 +34,15 @@ public class BankAccountController {
                         System.out.println(s + "\n");
                     }
                     break;
-                case "4": break;
+                case "4":
+                    System.out.println("계좌번호 : [   ]");
+                    account = new BankAccountDTO();
+                    account.setAccountNumber(scanner.next());
+                    System.out.println("입금액 : [   ]");
+                    account.setMoney(scanner.nextInt());
+
+                    
+                    break;
                 case "5": break;
                 case "6": break;
 

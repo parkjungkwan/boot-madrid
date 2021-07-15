@@ -7,10 +7,10 @@ public class BankAccountDTO {
 
     private String name;
     private String accountNumber;
-    private int money;
-    private int balance;
+    private String money;
+    private String balance;
     private String date;
-    private float interest;
+    private String interest;
     public static final String BANK_NAME = "비트은행";
 
     @Override

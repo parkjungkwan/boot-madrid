@@ -8,14 +8,14 @@ import kr.scalar.api.util.service.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class BankAccountServiceImpl implements BankAccountService{
+public class BankAccountServiceImpl extends LambdaUtils implements BankAccountService{
 
-    private BankAccountDTO bankAccount;
-    private List<BankAccountDTO> bankAcounts;
+    private final BankAccountDTO bankAccount;
+    private final List<BankAccountDTO> bankAcounts;
 
     @Override
-    public int count() {
-        return bankAcounts.size();
+    public String count() {
+        return string.apply(bankAcounts.size());
     }
 
     @Override
@@ -41,28 +41,29 @@ public class BankAccountServiceImpl implements BankAccountService{
 
     @Override
     public String[] findAllAccountNumbers() {
-        String[] accountNumbers = new String[count()];
-        for(int i=0; i < count(); i++){
+        int count = strToInt.apply(count());
+        String[] accountNumbers = new String[count];
+        for(int i=0; i < count; i++){
             accountNumbers[i] = bankAcounts.get(i).getAccountNumber();
         }
         return accountNumbers;
     }
 
     @Override
-    public int findBalance(BankAccountDTO bank) {
+    public String findBalance(BankAccountDTO bank) {
         return bankAccount.getMoney();
     }
 
     @Override
-    public int deposit(BankAccountDTO bank) {
-        int restMoney = bankAccount.getMoney();
+    public String deposit(BankAccountDTO bank) {
+        int restMoney = strToInt.apply(bankAccount.getMoney());
         bankAccount.setMoney(restMoney + bank.getMoney());
         return bankAccount.getMoney();
     }
 
     @Override
-    public int withdraw(BankAccountDTO bank) {
-        return 0;
+    public String withdraw(BankAccountDTO bank) {
+        return "";
     }
 
     @Override

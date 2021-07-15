@@ -18,11 +18,11 @@ import java.util.List;
 public interface BankAccountService {
 
     void createAccount(BankAccountDTO bank);
-    int count();
+    String count();
     List<?> findAll();
     String[] findAllAccountNumbers();
-    int findBalance(BankAccountDTO bank);
-    int deposit(BankAccountDTO bank);
-    int withdraw(BankAccountDTO bank);
+    String findBalance(BankAccountDTO bank);
+    String deposit(BankAccountDTO bank);
+    String withdraw(BankAccountDTO bank);
     void dropAccount(BankAccountDTO bank);
 }
