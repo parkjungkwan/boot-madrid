@@ -30,7 +30,7 @@ public class DogServiceImpl implements DogService{
     }
 
     @Override
-    public List<?> show() {
+    public List<? extends DogDTO> findAll() {
         return dogs;
     }
 

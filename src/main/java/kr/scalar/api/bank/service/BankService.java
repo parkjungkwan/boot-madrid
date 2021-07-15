@@ -19,7 +19,7 @@ public interface BankService {
 
     void createAccount(AccountDTO bank);
     String count();
-    List<?> findAll();
+    List<? extends AccountDTO> findAll();
     String[] findAllAccountNumbers();
     String findBalance(AccountDTO bank);
     String deposit(AccountDTO bank);

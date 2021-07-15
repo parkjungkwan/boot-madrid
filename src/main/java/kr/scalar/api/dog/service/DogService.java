@@ -7,7 +7,7 @@ import java.util.List;
 public interface DogService {
     void add(DogDTO dog);
     int count();
-    List<?> show();
+    List<? extends DogDTO> findAll();
     String barking(String bark);
     String fetching(String target);
     String waggingTail();

@@ -16,7 +16,7 @@ public class BankServiceImpl extends LambdaUtils implements BankService {
     }
 
     @Override
-    public List<?> findAll() {
+    public List<? extends AccountDTO> findAll() {
         return bankAcounts;
     }
 

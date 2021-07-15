@@ -33,29 +33,14 @@ public class DogController extends LambdaUtils {
                     print.accept(string.apply(dogService.count()));
                     break;
                 case "3":
-                    List<DogDTO> list =  (List<DogDTO>)dogService.show();
-                    for(DogDTO d : list){
-                        print.accept(d.toString());
-                    }
+                    List<? extends DogDTO> list =  dogService.findAll();
+                    for(DogDTO d : list){ print.accept(d.toString());}
                     break;
 
             }
         }
     }
 
-    public void add(DogDTO dog){
-        dogService.add(dog);
-    }
-
-
-    public int count() {
-        return dogService.count();
-    }
-
-    public void show(){
-        System.out.println("강아지의 수 : "+ dogService.count());
-        System.out.println(dogService.show());
-    }
 
     public String barking(String bark) {
         return dogService.barking(bark);

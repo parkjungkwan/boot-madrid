@@ -5,14 +5,12 @@ import lombok.Data;
 @Data
 public class BicycleDTO {
 
-    private int gear;
+    private String gear;
     private String pedal;
-    private int speed;
-
-
+    private String speed;
 
     @Override
     public String toString() {
-        return String.format("기어 : %d단 \n페달 : %s\n스피드 : %dkm",gear,pedal,speed);
+        return String.format("기어 : %s 단 \n페달 : %s\n스피드 : %s km",gear,pedal,speed);
     }
 }

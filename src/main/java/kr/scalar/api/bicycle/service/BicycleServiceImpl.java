@@ -7,11 +7,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class BicycleServiceImpl implements BicycleService{
-    private final BicycleDTO bicycle;
     private final List<BicycleDTO> bicycles;
 
     public BicycleServiceImpl(){
-        bicycle = new BicycleDTO();
         bicycles = new ArrayList<>();
     }
 
@@ -26,7 +24,7 @@ public class BicycleServiceImpl implements BicycleService{
     }
 
     @Override
-    public List<?> show() {
+    public List<? extends BicycleDTO> show() {
         return bicycles;
     }
 
