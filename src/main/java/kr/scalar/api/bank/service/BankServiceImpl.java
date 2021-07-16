@@ -72,7 +72,7 @@ public class BankServiceImpl extends LambdaUtils implements BankService {
     }
 /* Database 이후 사용할 코드
     @Override
-    public AccountDTO deposit(AccountDTO param) { 
+    public AccountDTO deposit(AccountDTO param) {
         AccountDTO account = findAccountByAccountNumber(param.getAccountNumber());
         int restMoney = strToInt.apply(account.getMoney());
         account.setMoney(restMoney + param.getMoney());
