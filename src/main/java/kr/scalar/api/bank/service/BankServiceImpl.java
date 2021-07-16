@@ -49,9 +49,9 @@ public class BankServiceImpl extends LambdaUtils implements BankService {
 
     @Override
     public AccountDTO findAccountByAccountNumber(String accountNumber) {
-        AccountDTO account = null;
+        AccountDTO account = new AccountDTO();
         for(AccountDTO a: acounts){
-            if(a.getAccountNumber().equals(accountNumber)){
+            if(accountNumber.equals(a.getAccountNumber())){
                 account = a;
                 break;
             }
@@ -63,14 +63,16 @@ public class BankServiceImpl extends LambdaUtils implements BankService {
     public String findBalanceByAccountNumber(String accountnumber) {
         String balance = "";
         for(AccountDTO a: acounts){
-            balance = a.getAccountNumber().equals(accountnumber)? a.getBalance(): "0";
-            break;
+            if( accountnumber.equals(a.getAccountNumber())){
+                balance = a.getBalance();
+                break;
+            }
         }
         return balance;
     }
-/*
+/* Database 이후 사용할 코드
     @Override
-    public AccountDTO deposit(AccountDTO param) {
+    public AccountDTO deposit(AccountDTO param) { 
         AccountDTO account = findAccountByAccountNumber(param.getAccountNumber());
         int restMoney = strToInt.apply(account.getMoney());
         account.setMoney(restMoney + param.getMoney());
