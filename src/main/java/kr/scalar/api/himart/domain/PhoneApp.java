@@ -3,7 +3,7 @@ package kr.scalar.api.himart.domain;
 import lombok.Data;
 
 public class PhoneApp {
-    @Data class Phone{
+    @Data public class Phone{
         protected String kind, company, call;
         @Override public String toString() {
             return "집전화기{" +
@@ -13,7 +13,7 @@ public class PhoneApp {
                     '}';
         }
     }
-    @Data class CelPhone extends Phone{
+    @Data public class CelPhone extends Phone{
         protected boolean portable;
         protected String move;
         @Override public String toString() {
@@ -25,7 +25,7 @@ public class PhoneApp {
                     '}';
         }
     }
-    @Data class IPhone extends CelPhone {
+    @Data public class IPhone extends CelPhone {
         public final static String BRAND = "아이폰";
         protected String internet;
         @Override public String toString() {
@@ -37,7 +37,7 @@ public class PhoneApp {
                     '}';
         }
     }
-    @Data class GalaxyNote extends IPhone {
+    @Data public class GalaxyNote extends IPhone {
         public final static String BRAND = "갤럭시폰";
         protected String pencil;
         @Override public String toString() {
