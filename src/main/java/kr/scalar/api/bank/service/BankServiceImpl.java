@@ -31,6 +31,9 @@ public class BankServiceImpl extends LambdaUtils implements BankService {
                 utilService.randomNumbers(4, true)
                 ;
         account.setAccountNumber(accountNumber);
+        account.setBalance("0");
+        account.setDate(utilService.todayAndCurrentTime());
+        account.setInterest("0.01");
         acounts.add(account);
     }
 
@@ -65,7 +68,7 @@ public class BankServiceImpl extends LambdaUtils implements BankService {
         }
         return balance;
     }
-
+/*
     @Override
     public AccountDTO deposit(AccountDTO param) {
         AccountDTO account = findAccountByAccountNumber(param.getAccountNumber());
@@ -80,9 +83,23 @@ public class BankServiceImpl extends LambdaUtils implements BankService {
         return account;
     }
 
+*/
     @Override
-    public String withdraw(AccountDTO bank) {
-        return "";
+    public void deposit(AccountDTO param) {
+        for(AccountDTO a: acounts){
+            if(param.getAccountNumber().equals(a.getAccountNumber())){
+                int balance = strToInt.apply(a.getBalance());
+                a.setBalance(string.apply(balance + strToInt.apply(param.getMoney())));
+                print.accept("입금 후 정보: "+a);
+                break;
+            }else{
+                print.accept("해당 계좌가 존재하지 않습니다");
+            }
+        }
+    }
+
+    @Override
+    public void withdraw(AccountDTO bank) {
     }
 
     @Override
