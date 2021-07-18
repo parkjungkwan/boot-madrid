@@ -9,6 +9,7 @@ public interface MathService {
     int divide(MathDTO calculator);
     int remain(MathDTO calculator);
     int[] sequence(MathDTO calculator);
+    int calculateSumUsingDataService();
 
 
 }

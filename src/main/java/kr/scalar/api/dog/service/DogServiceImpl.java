@@ -1,7 +1,5 @@
 package kr.scalar.api.dog.service;
 
-
-import kr.scalar.api.bicycle.domain.BicycleDTO;
 import org.springframework.stereotype.Service;
 import kr.scalar.api.dog.domain.DogDTO;
 import java.util.ArrayList;
@@ -11,11 +9,9 @@ import java.util.List;
 @Service
 public class DogServiceImpl implements DogService{
 
-    private final DogDTO dog;
     private final List<DogDTO> dogs;
 
     public DogServiceImpl(){
-        dog = new DogDTO();
         dogs = new ArrayList<>();
     }
 
@@ -35,16 +31,19 @@ public class DogServiceImpl implements DogService{
     }
 
     @Override
-    public String barking(String bark) {
-        return dog.toString()+ bark +" 짖는다";
+    public DogDTO findOne(String name) {
+        DogDTO dog = new DogDTO();
+        return dog;
     }
     @Override
-    public String fetching(String target) {
-        return dog.toString()+ target +"을 물어온다";
+    public List<? extends DogDTO> findByColor(String color) {
+        List<? extends DogDTO> dogsOfSameColor = new ArrayList<>();
+        return dogsOfSameColor;
     }
 
     @Override
-    public String waggingTail() {
-        return " 꼬리를 흔든다";
+    public List<? extends DogDTO> findByBreed  (String breed){
+        List<? extends DogDTO> dogsOfSameBreed = new ArrayList<>();
+        return dogsOfSameBreed;
     }
 }

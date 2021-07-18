@@ -8,7 +8,7 @@ public interface DogService {
     void add(DogDTO dog);
     int count();
     List<? extends DogDTO> findAll();
-    String barking(String bark);
-    String fetching(String target);
-    String waggingTail();
+    DogDTO findOne(String name);
+    List<? extends DogDTO> findByColor(String color);
+    List<? extends DogDTO> findByBreed(String breed);
 }

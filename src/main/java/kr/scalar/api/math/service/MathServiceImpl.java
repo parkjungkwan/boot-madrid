@@ -1,8 +1,15 @@
 package kr.scalar.api.math.service;
 
 import kr.scalar.api.math.domain.MathDTO;
+import kr.scalar.api.math.repository.MathRepository;
 
 public class MathServiceImpl implements MathService {
+
+    private MathRepository mathRepository;
+
+    public void setMathRepository(MathRepository mathRepository){
+        this.mathRepository = mathRepository;
+    }
 
     @Override
     public int add(MathDTO calculator) {
@@ -27,6 +34,16 @@ public class MathServiceImpl implements MathService {
     @Override
     public int remain(MathDTO calculator) {
         return calculator.getNum1() % calculator.getNum2();
+    }
+
+    @Override
+    public int calculateSumUsingDataService() {
+        int sum = 0;
+        int[] data = mathRepository.findAll();
+        for(int value: data){
+            sum += value;
+        }
+        return sum;
     }
 
     @Override

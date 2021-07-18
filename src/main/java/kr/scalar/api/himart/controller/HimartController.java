@@ -14,6 +14,7 @@ import java.util.Scanner;
 
 public class HimartController extends LambdaUtils {
     private final HimartService himartService;
+
     public HimartController(){
         himartService = new HimartServiceImpl();
     }
@@ -44,8 +45,6 @@ public class HimartController extends LambdaUtils {
                     
                     break;
 
-
-
             }
         }
 
@@ -67,7 +66,6 @@ public class HimartController extends LambdaUtils {
         PhoneApp.CelPhone celPhone = null;
         PhoneApp.IPhone iPhone = null;
         PhoneApp.GalaxyNote galaxyNote = null;
-
         while(true){
             print.accept("[Menu] 0-종료 1-집전화 2-휴대폰 3-아이폰 4-갤럭시");
             switch (scanner.next()){

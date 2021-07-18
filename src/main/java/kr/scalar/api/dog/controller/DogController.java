@@ -42,15 +42,4 @@ public class DogController extends LambdaUtils {
     }
 
 
-    public String barking(String bark) {
-        return dogService.barking(bark);
-    }
-
-    public String fetching(String target) {
-        return dogService.fetching(target);
-    }
-
-    public String waggingTail() {
-        return dogService.waggingTail();
-    }
 }
