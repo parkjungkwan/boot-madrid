@@ -1,6 +1,6 @@
 package kr.scalar.api.bank.service;
 
-import kr.scalar.api.bank.domain.AccountDTO;
+import kr.scalar.api.bank.domain.AccountDto;
 import java.util.List;
 
 /**
@@ -17,13 +17,13 @@ import java.util.List;
  * */
 public interface BankService {
 
-    void createAccount(AccountDTO bank);
+    void createAccount(AccountDto bank);
     String count();
-    List<? extends AccountDTO> findAll();
+    List<? extends AccountDto> findAll();
     String[] findAllAccountNumbers();
-    AccountDTO findAccountByAccountNumber(String accountNumber);
+    AccountDto findAccountByAccountNumber(String accountNumber);
     String findBalanceByAccountNumber(String accountnumber);
-    void deposit(AccountDTO bank);
-    void withdraw(AccountDTO bank);
-    void dropAccount(AccountDTO bank);
+    void deposit(AccountDto bank);
+    void withdraw(AccountDto bank);
+    void dropAccount(AccountDto bank);
 }

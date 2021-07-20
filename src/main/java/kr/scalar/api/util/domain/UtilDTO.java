@@ -8,7 +8,7 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 @Data
-public class UtilDTO {
+public class UtilDto {
     private LocalDate today;
     private LocalTime currentTime;
 

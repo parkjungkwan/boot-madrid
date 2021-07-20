@@ -1,6 +1,6 @@
 package kr.scalar.api.util.service;
 
-import kr.scalar.api.util.domain.UtilDTO;
+import kr.scalar.api.util.domain.UtilDto;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
@@ -19,10 +19,10 @@ public class UtilServiceImpl implements UtilService{
         return first + result;
     }
 
-    private UtilDTO util;
+    private UtilDto util;
 
     public UtilServiceImpl(){
-        this.util = new UtilDTO();
+        this.util = new UtilDto();
     }
 
     @Override

@@ -1,13 +1,13 @@
 package kr.scalar.api.bank.service;
 
-import kr.scalar.api.bank.domain.AccountDTO;
+import kr.scalar.api.bank.domain.AccountDto;
 import kr.scalar.api.util.service.*;
 import java.util.ArrayList;
 import java.util.List;
 
 public class BankServiceImpl extends LambdaUtils implements BankService {
 
-    private final List<AccountDTO> acounts;
+    private final List<AccountDto> acounts;
 
     @Override
     public String count() {
@@ -15,7 +15,7 @@ public class BankServiceImpl extends LambdaUtils implements BankService {
     }
 
     @Override
-    public List<? extends AccountDTO> findAll() {
+    public List<? extends AccountDto> findAll() {
         return acounts;
     }
 
@@ -24,7 +24,7 @@ public class BankServiceImpl extends LambdaUtils implements BankService {
     }
 
     @Override
-    public void createAccount(AccountDTO account) {
+    public void createAccount(AccountDto account) {
         UtilService utilService = new UtilServiceImpl();
         String accountNumber = utilService.randomNumbers(4, false) +"-"+
                 utilService.randomNumbers(4, true)+"-"+
@@ -48,9 +48,9 @@ public class BankServiceImpl extends LambdaUtils implements BankService {
     }
 
     @Override
-    public AccountDTO findAccountByAccountNumber(String accountNumber) {
-        AccountDTO account = new AccountDTO();
-        for(AccountDTO a: acounts){
+    public AccountDto findAccountByAccountNumber(String accountNumber) {
+        AccountDto account = new AccountDto();
+        for(AccountDto a: acounts){
             if(accountNumber.equals(a.getAccountNumber())){
                 account = a;
                 break;
@@ -62,7 +62,7 @@ public class BankServiceImpl extends LambdaUtils implements BankService {
     @Override
     public String findBalanceByAccountNumber(String accountnumber) {
         String balance = "";
-        for(AccountDTO a: acounts){
+        for(AccountDto a: acounts){
             if( accountnumber.equals(a.getAccountNumber())){
                 balance = a.getBalance();
                 break;
@@ -87,8 +87,8 @@ public class BankServiceImpl extends LambdaUtils implements BankService {
 
 */
     @Override
-    public void deposit(AccountDTO param) {
-        for(AccountDTO a: acounts){
+    public void deposit(AccountDto param) {
+        for(AccountDto a: acounts){
             if(param.getAccountNumber().equals(a.getAccountNumber())){
                 int balance = strToInt.apply(a.getBalance());
                 a.setBalance(string.apply(balance + strToInt.apply(param.getMoney())));
@@ -101,11 +101,11 @@ public class BankServiceImpl extends LambdaUtils implements BankService {
     }
 
     @Override
-    public void withdraw(AccountDTO bank) {
+    public void withdraw(AccountDto bank) {
     }
 
     @Override
-    public void dropAccount(AccountDTO bank) {
+    public void dropAccount(AccountDto bank) {
 
     }
 }
